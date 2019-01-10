@@ -55,6 +55,7 @@
             this.btnZIP.TabIndex = 0;
             this.btnZIP.Text = "ZIP";
             this.btnZIP.UseVisualStyleBackColor = true;
+            this.btnZIP.Click += new System.EventHandler(this.btnZIP_Click);
             // 
             // btnUNZIP
             // 
@@ -64,6 +65,7 @@
             this.btnUNZIP.TabIndex = 1;
             this.btnUNZIP.Text = "UNZIP";
             this.btnUNZIP.UseVisualStyleBackColor = true;
+            this.btnUNZIP.Click += new System.EventHandler(this.btnUNZIP_Click);
             // 
             // grpBoxMessages
             // 
@@ -94,6 +96,7 @@
             this.Name = "Proyecto2Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Proyecto 2 Main Screen";
+            this.Load += new System.EventHandler(this.Proyecto2Main_Load);
             this.grpBoxZIP.ResumeLayout(false);
             this.ResumeLayout(false);
 

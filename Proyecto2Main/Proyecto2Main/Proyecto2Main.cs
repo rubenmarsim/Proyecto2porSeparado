@@ -16,9 +16,9 @@ namespace Proyecto2Main
     {
         #region Variables e instancias Globales
 
-        #region ZIP
-        const string _PathArchive = @"archivos\PruebaZIP.txt";
-        const string _PathZIP = @"archivos\PruebaZIP.zip";
+        #region ZIP y UNZIP
+        const string _PathArchivos = @"archivos\";
+        const string _NameArchive = @"PruebaZIP.txt";      
         const string _PathExtract = @"archivos\extract";
         const string _Extension = ".zip";
         FileInfo _FileInfo;
@@ -36,7 +36,7 @@ namespace Proyecto2Main
 
         private void Proyecto2Main_Load(object sender, EventArgs e)
         {
-            _FileInfo = new FileInfo(_PathArchive);
+            _FileInfo = new FileInfo(_PathArchivos+_NameArchive);
         }
 
 
@@ -56,17 +56,21 @@ namespace Proyecto2Main
 
         #region Methods
         /// <summary>
-        /// 
+        /// Este metodo coge el fichero lo comprime y 
+        /// lo copia en el lugar que indiquemos
         /// </summary>
-        /// <param name="fi"></param>
+        /// <param name="fi">Objeto del archivo que vamos a comprimir</param>
         private void Compress(FileInfo fi)
         {
             using (FileStream inFile = fi.OpenRead())
             {
-                if((File.GetAttributes(fi.FullName)& FileAttributes.Hidden)!= FileAttributes.Hidden & fi.Extension != _Extension)
+                //Este if evita comprimir archivos ocultos y ya comprimidos.
+                if ((File.GetAttributes(fi.FullName) & FileAttributes.Hidden)!= FileAttributes.Hidden & fi.Extension != _Extension)
                 {
+                    //Crea el archivo comprimido.
                     using (FileStream outFile = File.Create(fi.FullName + _Extension))
                     {
+                        //Copia el archivo fuente en el compression stream
                         using (GZipStream Compress = new GZipStream(outFile, CompressionMode.Compress))
                         {
                             inFile.CopyTo(Compress);

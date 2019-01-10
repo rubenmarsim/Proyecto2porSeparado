@@ -11,9 +11,10 @@
         </member>
         <member name="M:Proyecto2Main.Proyecto2Main.Compress(System.IO.FileInfo)">
             <summary>
-            
+            Este metodo coge el fichero lo comprime y 
+            lo copia en el lugar que indiquemos
             </summary>
-            <param name="fi"></param>
+            <param name="fi">Objeto del archivo que vamos a comprimir</param>
         </member>
         <member name="F:Proyecto2Main.Proyecto2Main.components">
             <summary>
@@ -35,23 +36,6 @@
         <member name="M:Proyecto2Main.Program.Main">
             <summary>
             Punto de entrada principal para la aplicación.
-            </summary>
-        </member>
-        <member name="F:Proyecto2Main.ZIP.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:Proyecto2Main.ZIP.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:Proyecto2Main.ZIP.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
             </summary>
         </member>
         <member name="T:Proyecto2Main.Properties.Resources">

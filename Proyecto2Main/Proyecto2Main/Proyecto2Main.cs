@@ -45,7 +45,8 @@ namespace Proyecto2Main
         #region Events
         private void btnZIP_Click(object sender, EventArgs e)
         {
-            Compress(_FileInfo);
+            //Compress(_FileInfo);            
+            Comprimir();
         }
 
         private void btnUNZIP_Click(object sender, EventArgs e)
@@ -55,6 +56,11 @@ namespace Proyecto2Main
         #endregion
 
         #region Methods
+        private void Comprimir()
+        {
+            ZipFile.CreateFromDirectory(_PathArchivos, _PathArchivos+_NameArchive+_Extension);
+        }
+
         /// <summary>
         /// Este metodo coge el fichero lo comprime y 
         /// lo copia en el lugar que indiquemos
@@ -75,6 +81,27 @@ namespace Proyecto2Main
                         {
                             inFile.CopyTo(Compress);
                         }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fi">Objeto del archivo que vamos a descomprimir</param>
+        public static void Decompress(FileInfo fi)
+        {
+            using (FileStream originalFileStream = fi.OpenRead())
+            {
+                string currentFileName = fi.FullName;
+                string newFileName = currentFileName.Remove(currentFileName.Length - fi.Extension.Length);
+
+                using (FileStream decompressedFileStream = File.Create(newFileName))
+                {
+                    using (GZipStream decompressionStream = new GZipStream(originalFileStream, CompressionMode.Decompress))
+                    {
+                        decompressionStream.CopyTo(decompressedFileStream);
                     }
                 }
             }

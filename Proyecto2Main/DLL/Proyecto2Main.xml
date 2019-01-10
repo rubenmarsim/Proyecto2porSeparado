@@ -16,6 +16,12 @@
             </summary>
             <param name="fi">Objeto del archivo que vamos a comprimir</param>
         </member>
+        <member name="M:Proyecto2Main.Proyecto2Main.Decompress(System.IO.FileInfo)">
+            <summary>
+            
+            </summary>
+            <param name="fi">Objeto del archivo que vamos a descomprimir</param>
+        </member>
         <member name="F:Proyecto2Main.Proyecto2Main.components">
             <summary>
             Variable del diseñador necesaria.

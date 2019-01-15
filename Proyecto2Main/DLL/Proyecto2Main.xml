@@ -9,6 +9,37 @@
             Constructor por defecto
             </summary>
         </member>
+        <member name="M:Proyecto2Main.Proyecto2Main.Proyecto2Main_Load(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta cuando carga el form
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Proyecto2Main.Proyecto2Main.btnZIP_Click(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta cuando pulsamos el boton de comprimir
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Proyecto2Main.Proyecto2Main.btnUNZIP_Click(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta al pulsar el boton de descomprimir
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Proyecto2Main.Proyecto2Main.Comprimir">
+            <summary>
+            Metodo para comprimir todo lo que hay en la carpeta compress
+            </summary>
+        </member>
+        <member name="M:Proyecto2Main.Proyecto2Main.Descomprimir">
+            <summary>
+            Metodo para descomprimir todo lo que hay en el archivo ArchivosZIP.zip
+            </summary>
+        </member>
         <member name="M:Proyecto2Main.Proyecto2Main.Compress(System.IO.FileInfo)">
             <summary>
             Este metodo coge el fichero lo comprime y 

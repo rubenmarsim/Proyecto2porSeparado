@@ -173,15 +173,19 @@ namespace Proyecto2Main
         private void btnTCPIP_Click(object sender, EventArgs e)
         {
             try
-            {
+            {                
                 _Server.Show();
                 _Cliente.Show();
             }
             catch (ObjectDisposedException)
             {
-                MessageBox.Show("Reinicia el programa para acceder a esta opcion de nuevo");
-            }
-            
+                //MessageBox.Show("Reinicia el programa para acceder a esta opcion de nuevo");
+                DialogResult dialogResult = MessageBox.Show("Reinicia el programa para acceder a esta opcion de nuevo", "Reiniciar?!", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    this.Close();
+                }
+            }            
         }
         #endregion
 

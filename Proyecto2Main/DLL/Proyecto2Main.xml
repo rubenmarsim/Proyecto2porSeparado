@@ -11,7 +11,7 @@
         </member>
         <member name="M:Proyecto2Main.Proyecto2Main.Proyecto2Main_Load(System.Object,System.EventArgs)">
             <summary>
-            Evento que se ejecuta cuando carga el form
+            Evento que se ejecuta cuando carga el Form
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
@@ -73,6 +73,40 @@
         <member name="M:Proyecto2Main.Program.Main">
             <summary>
             Punto de entrada principal para la aplicación.
+            </summary>
+        </member>
+        <member name="F:Proyecto2Main.TCP_IP.Cliente.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Proyecto2Main.TCP_IP.Cliente.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Proyecto2Main.TCP_IP.Cliente.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Proyecto2Main.TCP_IP.Server.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Proyecto2Main.TCP_IP.Server.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Proyecto2Main.TCP_IP.Server.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
             </summary>
         </member>
         <member name="T:Proyecto2Main.Properties.Resources">

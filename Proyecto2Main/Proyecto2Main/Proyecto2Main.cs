@@ -15,14 +15,16 @@ namespace Proyecto2Main
     public partial class Proyecto2Main : Form
     {
         #region Variables e instancias Globales
-
         #region ZIP y UNZIP     
         const string _PathToCompress = @"archivos/compress";
         const string _PathCompressedArchive = @"archivos/ArchivosZIP.zip";
         const string _PathToDecompress = @"archivos\extract";
         FileInfo _FileInfo;
         #endregion
-
+        #region TCP-IP
+        TCP_IP.Server _Server;
+        TCP_IP.Cliente _Cliente;
+        #endregion
         #endregion
 
         /// <summary>
@@ -32,19 +34,25 @@ namespace Proyecto2Main
         {
             InitializeComponent();
         }
-
-        #region ZIP UNZIP
-
-        #region Events
         /// <summary>
-        /// Evento que se ejecuta cuando carga el form
+        /// Evento que se ejecuta cuando carga el Form
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Proyecto2Main_Load(object sender, EventArgs e)
         {
+            #region ZIP y UNZIP
             _FileInfo = new FileInfo(@"archivos\PruebaZIP.txt");
+            #endregion
+            #region TCP-IP
+            _Server = new TCP_IP.Server();
+            _Cliente = new TCP_IP.Cliente();
+            #endregion
         }
+
+        #region ZIP UNZIP
+
+        #region Events        
         /// <summary>
         /// Evento que se ejecuta cuando pulsamos el boton de comprimir
         /// </summary>
@@ -156,12 +164,17 @@ namespace Proyecto2Main
             }
         }
         #endregion
-        #endregion
 
         #endregion
 
-        #region Messages
+        #endregion
 
+        #region TCP-IP
+        private void btnTCPIP_Click(object sender, EventArgs e)
+        {
+            _Server.Show();
+            _Cliente.Show();
+        }
         #endregion
 
         #region Codes

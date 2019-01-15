@@ -16,5 +16,10 @@ namespace Proyecto2Main.TCP_IP
         {
             InitializeComponent();
         }
+
+        private void Server_Load(object sender, EventArgs e)
+        {
+            lblServerStatus.Text = "Server is Running...";
+        }
     }
 }

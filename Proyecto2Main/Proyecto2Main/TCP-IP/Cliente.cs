@@ -16,5 +16,20 @@ namespace Proyecto2Main.TCP_IP
         {
             InitializeComponent();
         }
+
+        private void Cliente_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEnviar_Click(object sender, EventArgs e)
+        {
+            txtBoxMandas.Text = txtBoxMessage.Text;
+        }
+
+        private void btnConectar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

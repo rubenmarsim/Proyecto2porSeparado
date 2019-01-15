@@ -81,6 +81,12 @@
     <EmbeddedResource Include="Proyecto2Main.resx">
       <DependentUpon>Proyecto2Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TCP-IP\Cliente.resx">
+      <DependentUpon>Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TCP-IP\Server.resx">
+      <DependentUpon>Server.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

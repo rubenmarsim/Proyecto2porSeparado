@@ -172,8 +172,16 @@ namespace Proyecto2Main
         #region TCP-IP
         private void btnTCPIP_Click(object sender, EventArgs e)
         {
-            _Server.Show();
-            _Cliente.Show();
+            try
+            {
+                _Server.Show();
+                _Cliente.Show();
+            }
+            catch (ObjectDisposedException)
+            {
+                MessageBox.Show("Reinicia el programa para acceder a esta opcion de nuevo");
+            }
+            
         }
         #endregion
 

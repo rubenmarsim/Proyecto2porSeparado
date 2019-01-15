@@ -44,7 +44,15 @@ namespace Proyecto2Main.TCP_IP
         /// <param name="e"></param>
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            txtBoxMandas.Text = txtBoxMessage.Text;
+            if (txtBoxMessage.Text != string.Empty)
+            {
+                //txtBoxMandas.Text = txtBoxMessage.Text;
+                SendMessage(_IP, txtBoxMessage.Text);
+            }
+            else
+            {
+                MessageBox.Show("Debes escribir algo en el textbox");
+            }            
         }
         /// <summary>
         /// Evento que se ejecuta cuando pulsamos el boton conectar
@@ -63,7 +71,7 @@ namespace Proyecto2Main.TCP_IP
         /// conectado a la misma ip especificada por el server, y la misma combinacion
         /// de puertos
         /// </summary>
-        /// <param name="server">ip del server al que nos vamos a conectar</param>
+        /// <param name="server">IP del server al que nos vamos a conectar</param>
         private void Connect(string server)
         {
             try
@@ -77,6 +85,61 @@ namespace Proyecto2Main.TCP_IP
             {
                 Console.WriteLine("SocketException: {0}", e);
             }
+        }
+        /// <summary>
+        /// Nos conecta con el server i envia el mensaje que hemos escrito en el textbox
+        /// </summary>
+        /// <param name="server">IP del server al que nos vamos a conectar</param>
+        /// <param name="message">Mensaje que vamos a envair</param>
+        private void SendMessage(string server, string message)
+        {
+            try
+            {   
+                _Client = new TcpClient(server, _Port);
+                Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
+                NetworkStream stream = _Client.GetStream();
+
+                // Send the message to the connected TcpServer. 
+                stream.Write(data, 0, data.Length);
+                if (txtBoxMandas.InvokeRequired)
+                {
+                    txtBoxMandas.Invoke((MethodInvoker)delegate { txtBoxMandas.Text = txtBoxMessage.Text; });
+                }
+                else
+                {
+                    txtBoxMandas.Text = txtBoxMessage.Text;
+                }
+                // Receive the TcpServer.response.
+
+                // Buffer to store the response bytes.
+                data = new Byte[1024];
+
+                // String to store the response ASCII representation.
+                string responseData = string.Empty;
+
+                // Read the first batch of the TcpServer response bytes.
+                Int32 bytes = stream.Read(data, 0, data.Length);
+                responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+                if (txtBoxRecibes.InvokeRequired)
+                {
+                    txtBoxRecibes.Invoke((MethodInvoker)delegate { txtBoxRecibes.Text = responseData; });
+                }
+                else
+                {
+                    txtBoxRecibes.Text = responseData;
+                }
+                // Close everything.
+                stream.Close();
+                _Client.Close();
+            }
+            catch (SocketException e)
+            {
+                Console.WriteLine("SocketException: {0}", e);
+            }
+            //catch (NullReferenceException)
+            //{
+            //    MessageBox.Show("Primero conecta con el server");
+            //}
         }
         #endregion
     }

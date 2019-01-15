@@ -61,6 +61,8 @@ namespace Proyecto2Main.TCP_IP
                 _Listener = new TcpListener(localAddr, _Port);
                 ///Iniciamos el listener
                 _Listener.Start();
+                Byte[] bytes = new Byte[1024];
+                String data = null;
             }
             catch (Exception ex)
             {
@@ -84,7 +86,53 @@ namespace Proyecto2Main.TCP_IP
                         else
                         {
                             lblClientStatus.Text = "Connected client\n";
-                        }                   
+                        }
+
+                        // Buffer for reading data
+                        Byte[] bytes = new Byte[256];
+                        String data = null;
+
+                        // Enter the listening loop.
+
+                        data = null;
+
+                        // Get a stream object for reading and writing
+                        NetworkStream stream = _Client.GetStream();
+
+                        int i;
+
+                        // Loop to receive all the data sent by the client.
+                        while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+                        {
+                            // Translate data bytes to a ASCII string.
+                            data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+                            if (txtBoxRecibes.InvokeRequired)
+                            {
+                                txtBoxRecibes.Invoke((MethodInvoker)delegate { txtBoxRecibes.Text = data; });
+                            }
+                            else
+                            {
+                                txtBoxRecibes.Text = data;
+                            }
+
+
+                            // Process the data sent by the client.
+                            data = "Por la alianza!!";
+
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
+
+                            // Send back a response.
+                            stream.Write(msg, 0, msg.Length);
+                            if (txtBoxMandas.InvokeRequired)
+                            {
+                                txtBoxMandas.Invoke((MethodInvoker)delegate { txtBoxMandas.Text = data; });
+                            }
+                            else
+                            {
+                                txtBoxMandas.Text = data;
+                            }
+                        }
+
                         ///Cerramos el cliente
                         _Client.Close();
                     }

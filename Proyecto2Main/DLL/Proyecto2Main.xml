@@ -75,6 +75,41 @@
             Punto de entrada principal para la aplicación.
             </summary>
         </member>
+        <member name="M:Proyecto2Main.TCP_IP.Cliente.#ctor">
+            <summary>
+            Constructor por defecto
+            </summary>
+        </member>
+        <member name="M:Proyecto2Main.TCP_IP.Cliente.Cliente_Load(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta cuando carga el Form del cliente
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Proyecto2Main.TCP_IP.Cliente.btnEnviar_Click(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta cuando pulsamos el boton enviar
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Proyecto2Main.TCP_IP.Cliente.btnConectar_Click(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta cuando pulsamos el boton conectar
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Proyecto2Main.TCP_IP.Cliente.Connect(System.String)">
+            <summary>
+            Nos conecta con el server
+            Nota: para que este cliente funcione necesitamos tener un TCPServer
+            conectado a la misma ip especificada por el server, y la misma combinacion
+            de puertos
+            </summary>
+            <param name="server">ip del server al que nos vamos a conectar</param>
+        </member>
         <member name="F:Proyecto2Main.TCP_IP.Cliente.components">
             <summary>
             Required designer variable.
@@ -90,6 +125,23 @@
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Proyecto2Main.TCP_IP.Server.#ctor">
+            <summary>
+            Constructor por defecto
+            </summary>
+        </member>
+        <member name="M:Proyecto2Main.TCP_IP.Server.Server_Load(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta cuando carga el Form del Server
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Proyecto2Main.TCP_IP.Server.ServerOn">
+            <summary>
+            Hace todos los procesos para que el server se inicie
             </summary>
         </member>
         <member name="F:Proyecto2Main.TCP_IP.Server.components">

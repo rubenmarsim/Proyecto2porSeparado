@@ -97,7 +97,9 @@ namespace Proyecto2Main
             catch (IOException)
             {
                 string[] FilePath = Directory.GetFiles(_PathToDecompress);
+                string[] carpetas = Directory.GetDirectories(_PathToDecompress);
                 foreach (string fp in FilePath) File.Delete(fp);
+                foreach (string cp in carpetas) Directory.Delete(cp);
                 ZipFile.ExtractToDirectory(_PathCompressedArchive, _PathToDecompress);
             }
             catch (UnauthorizedAccessException)

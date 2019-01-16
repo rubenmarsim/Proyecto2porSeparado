@@ -21,10 +21,6 @@ namespace Proyecto2Main
         const string _PathToDecompress = @"archivos\extract";
         FileInfo _FileInfo;
         #endregion
-        #region TCP-IP
-        TCP_IP.Server _Server;
-        TCP_IP.Cliente _Cliente;
-        #endregion
         #endregion
 
         /// <summary>
@@ -43,10 +39,6 @@ namespace Proyecto2Main
         {
             #region ZIP y UNZIP
             _FileInfo = new FileInfo(@"archivos\PruebaZIP.txt");
-            #endregion
-            #region TCP-IP
-            _Server = new TCP_IP.Server();
-            _Cliente = new TCP_IP.Cliente();
             #endregion
         }
 
@@ -173,9 +165,11 @@ namespace Proyecto2Main
         private void btnTCPIP_Click(object sender, EventArgs e)
         {
             try
-            {                
-                _Server.Show();
-                _Cliente.Show();
+            {
+                ServerTcpIP.frmServer frmServer = new ServerTcpIP.frmServer();
+                ClienteTcpIP.frmCliente frmCliente = new ClienteTcpIP.frmCliente();
+                frmServer.Show();
+                frmCliente.Show();
             }
             catch (ObjectDisposedException)
             {

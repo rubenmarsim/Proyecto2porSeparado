@@ -50,6 +50,7 @@ namespace ClienteTcpIP
             btnDisconnect.Enabled = true;
             _CanSend = true;
             VerificarSendButton();
+            Connect();
         }
         /// <summary>
         /// Evento que se ejecuta cuando pulsamos el boton enviar
@@ -84,6 +85,10 @@ namespace ClienteTcpIP
         }
         #endregion
         #region Methods
+        private void Connect()
+        {
+            _Client = new TcpClient(_IP, _Port);
+        }
         private void Disconnect()
         {
             try

@@ -73,6 +73,11 @@ namespace ClienteTcpIP
             VerificarSendButton();
             Disconnect();            
         }
+        /// <summary>
+        /// Evento que se ejecuta cuando cambia el textbox del message
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtBoxMessage_TextChanged(object sender, EventArgs e)
         {
             VerificarSendButton();
@@ -92,6 +97,9 @@ namespace ClienteTcpIP
                 MessageBox.Show(e.Message);
             }            
         }
+        /// <summary>
+        /// Verifica si se puede usar el boton de enviar o no
+        /// </summary>
         private void VerificarSendButton()
         {
             if (txtBoxMessage.Text.Equals(string.Empty) || !_CanSend)

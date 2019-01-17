@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,7 @@ namespace ServerTcpIP
         private void frmServer_Load(object sender, EventArgs e)
         {
             lblServerStatus.Text = "Server is Running...";
+            _Listener = new TcpListener(IPAddress.Any, _Port);
         }
     }
 }

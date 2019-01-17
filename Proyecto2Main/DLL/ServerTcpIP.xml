@@ -4,6 +4,18 @@
         <name>ServerTcpIP</name>
     </assembly>
     <members>
+        <member name="M:ServerTcpIP.frmServer.#ctor">
+            <summary>
+            Constructor por defecto
+            </summary>
+        </member>
+        <member name="M:ServerTcpIP.frmServer.frmServer_Load(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta cuando carga el Form del Server
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="F:ServerTcpIP.frmServer.components">
             <summary>
             Variable del diseñador necesaria.

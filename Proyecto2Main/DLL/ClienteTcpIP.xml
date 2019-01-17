@@ -4,6 +4,39 @@
         <name>ClienteTcpIP</name>
     </assembly>
     <members>
+        <member name="M:ClienteTcpIP.frmCliente.#ctor">
+            <summary>
+            Constructor por defecto
+            </summary>
+        </member>
+        <member name="M:ClienteTcpIP.frmCliente.frmCliente_Load(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta cuando carga el Form del cliente
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClienteTcpIP.frmCliente.btnConnect_Click(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta cuando pulsamos el boton conectar
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClienteTcpIP.frmCliente.btnSend_Click(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta cuando pulsamos el boton enviar
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClienteTcpIP.frmCliente.btnDisconnect_Click(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta cuando pulsamos el boton desconectar
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="F:ClienteTcpIP.frmCliente.components">
             <summary>
             Variable del diseñador necesaria.

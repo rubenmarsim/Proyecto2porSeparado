@@ -29,23 +29,29 @@
         private void InitializeComponent()
         {
             this.grpBoxCliente = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtBoxMessage = new System.Windows.Forms.TextBox();
+            this.txtBoxRecibes = new System.Windows.Forms.TextBox();
+            this.txtBoxMandas = new System.Windows.Forms.TextBox();
+            this.lblMessage = new System.Windows.Forms.Label();
+            this.lblRecibes = new System.Windows.Forms.Label();
+            this.lblMandas = new System.Windows.Forms.Label();
+            this.btnConnect = new System.Windows.Forms.Button();
+            this.btnSend = new System.Windows.Forms.Button();
+            this.btnDisconnect = new System.Windows.Forms.Button();
             this.grpBoxCliente.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpBoxCliente
             // 
-            this.grpBoxCliente.Controls.Add(this.textBox3);
-            this.grpBoxCliente.Controls.Add(this.textBox2);
-            this.grpBoxCliente.Controls.Add(this.textBox1);
-            this.grpBoxCliente.Controls.Add(this.label3);
-            this.grpBoxCliente.Controls.Add(this.label2);
-            this.grpBoxCliente.Controls.Add(this.label1);
+            this.grpBoxCliente.Controls.Add(this.btnDisconnect);
+            this.grpBoxCliente.Controls.Add(this.btnSend);
+            this.grpBoxCliente.Controls.Add(this.btnConnect);
+            this.grpBoxCliente.Controls.Add(this.txtBoxMessage);
+            this.grpBoxCliente.Controls.Add(this.txtBoxRecibes);
+            this.grpBoxCliente.Controls.Add(this.txtBoxMandas);
+            this.grpBoxCliente.Controls.Add(this.lblMessage);
+            this.grpBoxCliente.Controls.Add(this.lblRecibes);
+            this.grpBoxCliente.Controls.Add(this.lblMandas);
             this.grpBoxCliente.Location = new System.Drawing.Point(12, 12);
             this.grpBoxCliente.Name = "grpBoxCliente";
             this.grpBoxCliente.Size = new System.Drawing.Size(412, 196);
@@ -53,53 +59,88 @@
             this.grpBoxCliente.TabStop = false;
             this.grpBoxCliente.Text = "Cliente";
             // 
-            // label1
+            // txtBoxMessage
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.txtBoxMessage.Location = new System.Drawing.Point(120, 109);
+            this.txtBoxMessage.Name = "txtBoxMessage";
+            this.txtBoxMessage.Size = new System.Drawing.Size(270, 20);
+            this.txtBoxMessage.TabIndex = 5;
+            this.txtBoxMessage.TextChanged += new System.EventHandler(this.txtBoxMessage_TextChanged);
             // 
-            // label2
+            // txtBoxRecibes
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
+            this.txtBoxRecibes.Location = new System.Drawing.Point(120, 71);
+            this.txtBoxRecibes.Name = "txtBoxRecibes";
+            this.txtBoxRecibes.ReadOnly = true;
+            this.txtBoxRecibes.Size = new System.Drawing.Size(270, 20);
+            this.txtBoxRecibes.TabIndex = 4;
             // 
-            // label3
+            // txtBoxMandas
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 117);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
+            this.txtBoxMandas.Location = new System.Drawing.Point(120, 40);
+            this.txtBoxMandas.Name = "txtBoxMandas";
+            this.txtBoxMandas.ReadOnly = true;
+            this.txtBoxMandas.Size = new System.Drawing.Size(270, 20);
+            this.txtBoxMandas.TabIndex = 3;
             // 
-            // textBox1
+            // lblMessage
             // 
-            this.textBox1.Location = new System.Drawing.Point(120, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(270, 20);
-            this.textBox1.TabIndex = 3;
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Location = new System.Drawing.Point(37, 117);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(53, 13);
+            this.lblMessage.TabIndex = 2;
+            this.lblMessage.Text = "Message:";
             // 
-            // textBox2
+            // lblRecibes
             // 
-            this.textBox2.Location = new System.Drawing.Point(120, 71);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(270, 20);
-            this.textBox2.TabIndex = 4;
+            this.lblRecibes.AutoSize = true;
+            this.lblRecibes.Location = new System.Drawing.Point(37, 71);
+            this.lblRecibes.Name = "lblRecibes";
+            this.lblRecibes.Size = new System.Drawing.Size(49, 13);
+            this.lblRecibes.TabIndex = 1;
+            this.lblRecibes.Text = "Recibes:";
             // 
-            // textBox3
+            // lblMandas
             // 
-            this.textBox3.Location = new System.Drawing.Point(120, 109);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(270, 20);
-            this.textBox3.TabIndex = 5;
+            this.lblMandas.AutoSize = true;
+            this.lblMandas.Location = new System.Drawing.Point(37, 40);
+            this.lblMandas.Name = "lblMandas";
+            this.lblMandas.Size = new System.Drawing.Size(48, 13);
+            this.lblMandas.TabIndex = 0;
+            this.lblMandas.Text = "Mandas:";
+            // 
+            // btnConnect
+            // 
+            this.btnConnect.Location = new System.Drawing.Point(234, 152);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(75, 23);
+            this.btnConnect.TabIndex = 6;
+            this.btnConnect.Text = "Connect";
+            this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
+            // 
+            // btnSend
+            // 
+            this.btnSend.Enabled = false;
+            this.btnSend.Location = new System.Drawing.Point(315, 152);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(75, 23);
+            this.btnSend.TabIndex = 7;
+            this.btnSend.Text = "Send";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            // 
+            // btnDisconnect
+            // 
+            this.btnDisconnect.Enabled = false;
+            this.btnDisconnect.Location = new System.Drawing.Point(27, 152);
+            this.btnDisconnect.Name = "btnDisconnect";
+            this.btnDisconnect.Size = new System.Drawing.Size(75, 23);
+            this.btnDisconnect.TabIndex = 8;
+            this.btnDisconnect.Text = "Disconnect";
+            this.btnDisconnect.UseVisualStyleBackColor = true;
+            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
             // 
             // frmCliente
             // 
@@ -109,6 +150,7 @@
             this.Controls.Add(this.grpBoxCliente);
             this.Name = "frmCliente";
             this.Text = "frmCliente";
+            this.Load += new System.EventHandler(this.frmCliente_Load);
             this.grpBoxCliente.ResumeLayout(false);
             this.grpBoxCliente.PerformLayout();
             this.ResumeLayout(false);
@@ -118,12 +160,15 @@
         #endregion
 
         private System.Windows.Forms.GroupBox grpBoxCliente;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.Label lblRecibes;
+        private System.Windows.Forms.Label lblMandas;
+        private System.Windows.Forms.TextBox txtBoxMessage;
+        private System.Windows.Forms.TextBox txtBoxRecibes;
+        private System.Windows.Forms.TextBox txtBoxMandas;
+        private System.Windows.Forms.Button btnDisconnect;
+        private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.Button btnConnect;
     }
 }
 

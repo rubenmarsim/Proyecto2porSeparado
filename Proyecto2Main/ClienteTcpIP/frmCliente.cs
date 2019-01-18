@@ -14,11 +14,13 @@ namespace ClienteTcpIP
     public partial class frmCliente : Form
     {
         #region Variables Globales
-        const string _IP = "127.0.0.1";
+        const string _IP = "172.17.20.106";
         TcpClient _Client;
-        NetworkStream _Stream;
+        NetworkStream _nStream;
         const Int32 _Port = 5000;
         bool _CanSend;
+        string _ClientMessage = string.Empty;
+        string _Resposta = string.Empty;
         #endregion
         #region Constructores
         /// <summary>
@@ -38,6 +40,8 @@ namespace ClienteTcpIP
         private void frmCliente_Load(object sender, EventArgs e)
         {
             _CanSend = false;
+            _ClientMessage = txtBoxMessage.Text;
+            txtBoxMandas.Text = txtBoxMessage.Text;
         }
         /// <summary>
         /// Evento que se ejecuta cuando pulsamos el boton conectar
@@ -59,7 +63,7 @@ namespace ClienteTcpIP
         /// <param name="e"></param>
         private void btnSend_Click(object sender, EventArgs e)
         {
-
+            Conversiones();
         }
         /// <summary>
         /// Evento que se ejecuta cuando pulsamos el boton desconectar
@@ -87,13 +91,39 @@ namespace ClienteTcpIP
         #region Methods
         private void Connect()
         {
+            //Creamos el TCPClient asociado el server
             _Client = new TcpClient(_IP, _Port);
+            //Instanciamos un NetworkStream para leer y escribir a partir de GetStream
+            _nStream = _Client.GetStream();
         }
+        /// <summary>
+        /// Convertimos los datos y los mandamos y
+        /// preparamos el socket para que escuche la respuesta del server
+        /// </summary>
+        private void Conversiones()
+        {
+            //Convertimos un mensaje a un array de bytes
+            byte[] dades = Encoding.ASCII.GetBytes(_ClientMessage);
+
+            //Enviamos el mensaje al server
+            _nStream.Write(dades, 0, dades.Length);
+
+            //byte[] dades2 = Encoding.ASCII.GetBytes(_UserMessage);
+            //_NS.Write(dades2, 0, dades2.Length);
+
+            ///Recivimos la respuesta
+            var dadaResposta = new byte[256];
+            Int32 bytes = _nStream.Read(dadaResposta, 0, dadaResposta.Length);
+            _Resposta = Encoding.ASCII.GetString(dadaResposta, 0, bytes);
+        }
+        /// <summary>
+        /// Cerramos todo
+        /// </summary>
         private void Disconnect()
         {
             try
             {
-                _Stream.Close();
+                _nStream.Close();
                 _Client.Close();
             }
             ///Ponemos el catch por si pulsan el boton desconectar antes que el de conectar

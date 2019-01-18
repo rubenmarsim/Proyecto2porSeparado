@@ -168,8 +168,11 @@ namespace Proyecto2Main
             {
                 ServerTcpIP.frmServer frmServer = new ServerTcpIP.frmServer();
                 ClienteTcpIP.frmCliente frmCliente = new ClienteTcpIP.frmCliente();
+
+
                 frmServer.Show();
                 frmCliente.Show();
+                //frmServer.Show();
             }
             catch (ObjectDisposedException)
             {
@@ -179,7 +182,11 @@ namespace Proyecto2Main
                 {
                     this.Close();
                 }
-            }            
+            }
+            catch(Exception eh)
+            {
+                MessageBox.Show(eh.Message);
+            }
         }
         #endregion
 

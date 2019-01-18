@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             this.grpBoxServer = new System.Windows.Forms.GroupBox();
-            this.lblServerStatus = new System.Windows.Forms.Label();
-            this.lblClientStatus = new System.Windows.Forms.Label();
-            this.lblRecibes = new System.Windows.Forms.Label();
-            this.lblMandas = new System.Windows.Forms.Label();
-            this.txtBoxRecibes = new System.Windows.Forms.TextBox();
             this.txtBoxMandas = new System.Windows.Forms.TextBox();
+            this.txtBoxRecibes = new System.Windows.Forms.TextBox();
+            this.lblMandas = new System.Windows.Forms.Label();
+            this.lblRecibes = new System.Windows.Forms.Label();
+            this.lblClientStatus = new System.Windows.Forms.Label();
+            this.lblServerStatus = new System.Windows.Forms.Label();
+            this.btnApagar = new System.Windows.Forms.Button();
             this.grpBoxServer.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpBoxServer
             // 
+            this.grpBoxServer.Controls.Add(this.btnApagar);
             this.grpBoxServer.Controls.Add(this.txtBoxMandas);
             this.grpBoxServer.Controls.Add(this.txtBoxRecibes);
             this.grpBoxServer.Controls.Add(this.lblMandas);
@@ -53,32 +55,22 @@
             this.grpBoxServer.TabStop = false;
             this.grpBoxServer.Text = "Server";
             // 
-            // lblServerStatus
+            // txtBoxMandas
             // 
-            this.lblServerStatus.AutoSize = true;
-            this.lblServerStatus.Location = new System.Drawing.Point(20, 29);
-            this.lblServerStatus.Name = "lblServerStatus";
-            this.lblServerStatus.Size = new System.Drawing.Size(71, 13);
-            this.lblServerStatus.TabIndex = 0;
-            this.lblServerStatus.Text = "Server Status";
+            this.txtBoxMandas.Location = new System.Drawing.Point(80, 135);
+            this.txtBoxMandas.Name = "txtBoxMandas";
+            this.txtBoxMandas.ReadOnly = true;
+            this.txtBoxMandas.Size = new System.Drawing.Size(263, 20);
+            this.txtBoxMandas.TabIndex = 7;
+            this.txtBoxMandas.Text = "Por la alianza!";
             // 
-            // lblClientStatus
+            // txtBoxRecibes
             // 
-            this.lblClientStatus.AutoSize = true;
-            this.lblClientStatus.Location = new System.Drawing.Point(25, 60);
-            this.lblClientStatus.Name = "lblClientStatus";
-            this.lblClientStatus.Size = new System.Drawing.Size(66, 13);
-            this.lblClientStatus.TabIndex = 1;
-            this.lblClientStatus.Text = "Client Status";
-            // 
-            // lblRecibes
-            // 
-            this.lblRecibes.AutoSize = true;
-            this.lblRecibes.Location = new System.Drawing.Point(25, 105);
-            this.lblRecibes.Name = "lblRecibes";
-            this.lblRecibes.Size = new System.Drawing.Size(49, 13);
-            this.lblRecibes.TabIndex = 2;
-            this.lblRecibes.Text = "Recibes:";
+            this.txtBoxRecibes.Location = new System.Drawing.Point(80, 102);
+            this.txtBoxRecibes.Name = "txtBoxRecibes";
+            this.txtBoxRecibes.ReadOnly = true;
+            this.txtBoxRecibes.Size = new System.Drawing.Size(263, 20);
+            this.txtBoxRecibes.TabIndex = 6;
             // 
             // lblMandas
             // 
@@ -89,21 +81,42 @@
             this.lblMandas.TabIndex = 3;
             this.lblMandas.Text = "Mandas:";
             // 
-            // txtBoxRecibes
+            // lblRecibes
             // 
-            this.txtBoxRecibes.Location = new System.Drawing.Point(80, 102);
-            this.txtBoxRecibes.Name = "txtBoxRecibes";
-            this.txtBoxRecibes.ReadOnly = true;
-            this.txtBoxRecibes.Size = new System.Drawing.Size(263, 20);
-            this.txtBoxRecibes.TabIndex = 6;
+            this.lblRecibes.AutoSize = true;
+            this.lblRecibes.Location = new System.Drawing.Point(25, 105);
+            this.lblRecibes.Name = "lblRecibes";
+            this.lblRecibes.Size = new System.Drawing.Size(49, 13);
+            this.lblRecibes.TabIndex = 2;
+            this.lblRecibes.Text = "Recibes:";
             // 
-            // txtBoxMandas
+            // lblClientStatus
             // 
-            this.txtBoxMandas.Location = new System.Drawing.Point(80, 135);
-            this.txtBoxMandas.Name = "txtBoxMandas";
-            this.txtBoxMandas.ReadOnly = true;
-            this.txtBoxMandas.Size = new System.Drawing.Size(263, 20);
-            this.txtBoxMandas.TabIndex = 7;
+            this.lblClientStatus.AutoSize = true;
+            this.lblClientStatus.Location = new System.Drawing.Point(25, 60);
+            this.lblClientStatus.Name = "lblClientStatus";
+            this.lblClientStatus.Size = new System.Drawing.Size(66, 13);
+            this.lblClientStatus.TabIndex = 1;
+            this.lblClientStatus.Text = "Client Status";
+            // 
+            // lblServerStatus
+            // 
+            this.lblServerStatus.AutoSize = true;
+            this.lblServerStatus.Location = new System.Drawing.Point(20, 29);
+            this.lblServerStatus.Name = "lblServerStatus";
+            this.lblServerStatus.Size = new System.Drawing.Size(71, 13);
+            this.lblServerStatus.TabIndex = 0;
+            this.lblServerStatus.Text = "Server Status";
+            // 
+            // btnApagar
+            // 
+            this.btnApagar.Location = new System.Drawing.Point(280, 168);
+            this.btnApagar.Name = "btnApagar";
+            this.btnApagar.Size = new System.Drawing.Size(97, 23);
+            this.btnApagar.TabIndex = 8;
+            this.btnApagar.Text = "Apagar Server";
+            this.btnApagar.UseVisualStyleBackColor = true;
+            //this.btnApagar.Click += new System.EventHandler(this.btnApagar_Click);
             // 
             // frmServer
             // 
@@ -129,6 +142,7 @@
         private System.Windows.Forms.Label lblRecibes;
         private System.Windows.Forms.Label lblClientStatus;
         private System.Windows.Forms.Label lblServerStatus;
+        private System.Windows.Forms.Button btnApagar;
     }
 }
 

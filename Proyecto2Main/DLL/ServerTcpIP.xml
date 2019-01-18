@@ -16,6 +16,13 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:ServerTcpIP.frmServer.IniciarServer">
+            <summary>
+            Iniciamos e instanciamos el server y demas componenetes necesarios,
+            y los preparamos para que esten activados y a la escucha en el caso
+            del server
+            </summary>
+        </member>
         <member name="F:ServerTcpIP.frmServer.components">
             <summary>
             Variable del diseñador necesaria.

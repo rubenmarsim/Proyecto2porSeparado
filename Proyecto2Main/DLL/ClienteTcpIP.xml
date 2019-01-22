@@ -4,6 +4,32 @@
         <name>ClienteTcpIP</name>
     </assembly>
     <members>
+        <member name="F:ClienteTcpIP.frmCliente._IP">
+            <summary>
+            Declaramos la ip del server al cual nos vamos a conectar
+            </summary>
+        </member>
+        <member name="F:ClienteTcpIP.frmCliente._Client">
+            <summary>
+            Declaramos el TcpClient, este actua como cliente
+            </summary>
+        </member>
+        <member name="F:ClienteTcpIP.frmCliente._nStream">
+            <summary>
+            Declaramos el NetworkStream, que sirve para enviar 
+            y recibir datos del host remoto
+            </summary>
+        </member>
+        <member name="F:ClienteTcpIP.frmCliente._Port">
+            <summary>
+            Declaramos el puerto el cual vamos a usar
+            </summary>
+        </member>
+        <member name="F:ClienteTcpIP.frmCliente._CanSend">
+            <summary>
+            declaramos un boolean para verificar si podemos pulsar el botn send o no
+            </summary>
+        </member>
         <member name="M:ClienteTcpIP.frmCliente.#ctor">
             <summary>
             Constructor por defecto

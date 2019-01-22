@@ -4,6 +4,32 @@
         <name>ServerTcpIP</name>
     </assembly>
     <members>
+        <member name="F:ServerTcpIP.frmServer._Listener">
+            <summary>
+            Declaramos el TcpListener, este actua como server
+            </summary>
+        </member>
+        <member name="F:ServerTcpIP.frmServer._Client">
+            <summary>
+            Declaramos el TcpClient, este actua como cliente
+            </summary>
+        </member>
+        <member name="F:ServerTcpIP.frmServer._nStream">
+            <summary>
+            Declaramos el NetworkStream, que sirve para enviar 
+            y recibir datos del host remoto
+            </summary>
+        </member>
+        <member name="F:ServerTcpIP.frmServer._Port">
+            <summary>
+            Declaramos el puerto el cual vamos a usar
+            </summary>
+        </member>
+        <member name="F:ServerTcpIP.frmServer._IP">
+            <summary>
+            Declaramos la ip del server al cual nos vamos a conectar
+            </summary>
+        </member>
         <member name="M:ServerTcpIP.frmServer.#ctor">
             <summary>
             Constructor por defecto

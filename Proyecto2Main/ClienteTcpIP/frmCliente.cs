@@ -14,10 +14,26 @@ namespace ClienteTcpIP
     public partial class frmCliente : Form
     {
         #region Variables Globales
+        /// <summary>
+        /// Declaramos la ip del server al cual nos vamos a conectar
+        /// </summary>
         const string _IP = "127.0.0.1";
+        /// <summary>
+        /// Declaramos el TcpClient, este actua como cliente
+        /// </summary>
         TcpClient _Client;
+        /// <summary>
+        /// Declaramos el NetworkStream, que sirve para enviar 
+        /// y recibir datos del host remoto
+        /// </summary>
         NetworkStream _nStream;
+        /// <summary>
+        /// Declaramos el puerto el cual vamos a usar
+        /// </summary>
         const Int32 _Port = 1013;
+        /// <summary>
+        /// declaramos un boolean para verificar si podemos pulsar el botn send o no
+        /// </summary>
         bool _CanSend;
         #endregion
         #region Constructores
@@ -37,6 +53,7 @@ namespace ClienteTcpIP
         /// <param name="e"></param>
         private void frmCliente_Load(object sender, EventArgs e)
         {
+            ///le damos valor false al bool cansend
             _CanSend = false;
         }
         /// <summary>
@@ -58,6 +75,7 @@ namespace ClienteTcpIP
         /// <param name="e"></param>
         private void btnSend_Click(object sender, EventArgs e)
         {
+            ///Llamamor al metodo ConnectandSend que conecta con el server y le envia datos
             ConnectandSend(_IP, txtBoxMessage.Text);
         }
         /// <summary>
@@ -93,11 +111,17 @@ namespace ClienteTcpIP
         {
             try
             {
+                ///Instanciamos el TcpClient y le pasamos los parametros, que son
+                ///la ip a donde se tiene que conectar y el puerto
                 _Client = new TcpClient(server, _Port);
+                ///pasamos el mensaje a bytes
                 Byte[] data = Encoding.ASCII.GetBytes(message);
-
+                ///Le decimos al networkstream que use el TcpClient
                 _nStream = _Client.GetStream();
+                ///Le decimos al networkstream que escriba el data que 
+                ///hemos creado previamente
                 _nStream.Write(data, 0, data.Length);
+                ///indica si se debe llamar a un metodo de invocacion
                 if (txtBoxMandas.InvokeRequired)
                 {
                     txtBoxMandas.Invoke((MethodInvoker)delegate { txtBoxMandas.Text = txtBoxMessage.Text; });
@@ -106,10 +130,16 @@ namespace ClienteTcpIP
                 {
                     txtBoxMandas.Text = txtBoxMessage.Text;
                 }
+                ///instanciamos data como buffer
                 data = new byte[1024];
+                ///declaramos un string que nos va a servir para coger
+                ///la respuesta del server
                 string responseData = string.Empty;
+                ///llenamos bytes con el buffer
                 Int32 bytes = _nStream.Read(data, 0, data.Length);
+                ///pasamos la respuesta obtenida en bytes a string
                 responseData = Encoding.ASCII.GetString(data, 0, bytes);
+                ///indica si se debe llamar a un metodo de invocacion
                 if (txtBoxRecibes.InvokeRequired)
                 {
                     txtBoxRecibes.Invoke((MethodInvoker)delegate { txtBoxRecibes.Text = responseData; });
@@ -118,8 +148,11 @@ namespace ClienteTcpIP
                 {
                     txtBoxRecibes.Text = responseData;
                 }
+                ///Cerramos el networkstream
                 _nStream.Close();
+                ///Cerramos el TcpClient
                 _Client.Close();
+
             }catch(SocketException e)
             {
                 MessageBox.Show(e.Message);

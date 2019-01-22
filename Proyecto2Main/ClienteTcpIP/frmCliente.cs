@@ -95,7 +95,7 @@ namespace ClienteTcpIP
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-            }            
+            }
         }
         /// <summary>
         /// Verifica si se puede usar el boton de enviar o no

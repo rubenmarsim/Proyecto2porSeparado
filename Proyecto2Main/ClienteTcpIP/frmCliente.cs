@@ -16,8 +16,8 @@ namespace ClienteTcpIP
         #region Variables Globales
         const string _IP = "127.0.0.1";
         TcpClient _Client;
-        NetworkStream _Stream;
-        const Int32 _Port = 5000;
+        NetworkStream _nStream;
+        const Int32 _Port = 1013;
         bool _CanSend;
         #endregion
         #region Constructores
@@ -58,7 +58,7 @@ namespace ClienteTcpIP
         /// <param name="e"></param>
         private void btnSend_Click(object sender, EventArgs e)
         {
-
+            ConnectandSend(_IP, txtBoxMessage.Text);
         }
         /// <summary>
         /// Evento que se ejecuta cuando pulsamos el boton desconectar
@@ -84,24 +84,68 @@ namespace ClienteTcpIP
         }
         #endregion
         #region Methods
+        /// <summary>
+        /// Nos conectamos al server y le mandamos un mensaje
+        /// </summary>
+        /// <param name="server">IP del server al que nos vamos a conectar</param>
+        /// <param name="message">mensaje que vamos a enviar</param>
+        private void ConnectandSend(string server, string message)
+        {
+            try
+            {
+                _Client = new TcpClient(server, _Port);
+                Byte[] data = Encoding.ASCII.GetBytes(message);
+
+                _nStream = _Client.GetStream();
+                _nStream.Write(data, 0, data.Length);
+                if (txtBoxMandas.InvokeRequired)
+                {
+                    txtBoxMandas.Invoke((MethodInvoker)delegate { txtBoxMandas.Text = txtBoxMessage.Text; });
+                }
+                else
+                {
+                    txtBoxMandas.Text = txtBoxMessage.Text;
+                }
+                data = new byte[1024];
+                string responseData = string.Empty;
+                Int32 bytes = _nStream.Read(data, 0, data.Length);
+                if (txtBoxRecibes.InvokeRequired)
+                {
+                    txtBoxRecibes.Invoke((MethodInvoker)delegate { txtBoxRecibes.Text = responseData; });
+                }
+                else
+                {
+                    txtBoxRecibes.Text = responseData;
+                }
+                _nStream.Close();
+                _Client.Close();
+            }catch(SocketException e)
+            {
+                MessageBox.Show(e.Message);
+            }        
+        }
+        /// <summary>
+        /// Parar todo
+        /// </summary>
         private void Disconnect()
         {
             try
             {
-                _Stream.Close();
+                _nStream.Close();
                 _Client.Close();
             }
             ///Ponemos el catch por si pulsan el boton desconectar antes que el de conectar
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-            }            
+            }
         }
         /// <summary>
         /// Verifica si se puede usar el boton de enviar o no
         /// </summary>
         private void VerificarSendButton()
         {
+            _CanSend = true;
             if (txtBoxMessage.Text.Equals(string.Empty) || !_CanSend)
             {
                 btnSend.Enabled = false;

@@ -37,6 +37,30 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:ClienteTcpIP.frmCliente.txtBoxMessage_TextChanged(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta cuando cambia el textbox del message
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClienteTcpIP.frmCliente.ConnectandSend(System.String,System.String)">
+            <summary>
+            Nos conectamos al server y le mandamos un mensaje
+            </summary>
+            <param name="server">IP del server al que nos vamos a conectar</param>
+            <param name="message">mensaje que vamos a enviar</param>
+        </member>
+        <member name="M:ClienteTcpIP.frmCliente.Disconnect">
+            <summary>
+            Parar todo
+            </summary>
+        </member>
+        <member name="M:ClienteTcpIP.frmCliente.VerificarSendButton">
+            <summary>
+            Verifica si se puede usar el boton de enviar o no
+            </summary>
+        </member>
         <member name="F:ClienteTcpIP.frmCliente.components">
             <summary>
             Variable del diseñador necesaria.

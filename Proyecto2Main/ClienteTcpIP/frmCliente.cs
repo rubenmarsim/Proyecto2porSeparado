@@ -109,6 +109,7 @@ namespace ClienteTcpIP
                 data = new byte[1024];
                 string responseData = string.Empty;
                 Int32 bytes = _nStream.Read(data, 0, data.Length);
+                responseData = Encoding.ASCII.GetString(data, 0, bytes);
                 if (txtBoxRecibes.InvokeRequired)
                 {
                     txtBoxRecibes.Invoke((MethodInvoker)delegate { txtBoxRecibes.Text = responseData; });

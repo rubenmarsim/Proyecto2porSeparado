@@ -17,7 +17,7 @@ namespace ClienteTcpIP
         const string _IP = "127.0.0.1";
         TcpClient _Client;
         NetworkStream _nStream;
-        const Int32 _Port = 5000;
+        const Int32 _Port = 1013;
         bool _CanSend;
         #endregion
         #region Constructores

@@ -18,7 +18,7 @@ namespace ServerTcpIP
         #region Variables Globales
         TcpListener _Listener = null;
         TcpClient _Client = null;
-        const Int32 _Port = 5000;
+        const Int32 _Port = 1013;
         const string _IP = "127.0.0.1";
         #endregion
         #region Constructores

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -37,6 +38,14 @@ namespace ServerTcpIP
         /// Declaramos la ip del server al cual nos vamos a conectar
         /// </summary>
         const string _IP = "127.0.0.1";
+        /// <summary>
+        /// Declarmos el stream reader, para poder leer los ficheros
+        /// </summary>
+        StreamReader _strRFile;
+        /// <summary>
+        /// Declaramos una constante con el path del fichero que vamos a leer
+        /// </summary>
+        const string _Path = @"archivos/codigos.txt";
         #endregion
         #region Constructores
         /// <summary>
@@ -146,17 +155,17 @@ namespace ServerTcpIP
                             ///le vamos a mandar al server
                             data = "Por la alianza!!";
                             ///la pasamos de string a bytes
-                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(leerArchivos());
                             ///y se la enviamos al server
                             _nStream.Write(msg, 0, msg.Length);
                             ///indica si se debe llamar a un metodo de invocacion
                             if (txtBoxMandas.InvokeRequired)
                             {
-                                txtBoxMandas.Invoke((MethodInvoker)delegate { txtBoxMandas.Text = data; });
+                                txtBoxMandas.Invoke((MethodInvoker)delegate { txtBoxMandas.Text = leerArchivos(); });
                             }
                             else
                             {
-                                txtBoxMandas.Text = data;
+                                txtBoxMandas.Text = leerArchivos() ;
                             }
                         }
                         ///Cerramos el cliente
@@ -168,6 +177,27 @@ namespace ServerTcpIP
                     Console.WriteLine("SocketException: {0}", e);
                 }
             }
+        }
+        /// <summary>
+        /// Leemos todo el fichero linea por line y lo vamos concatenando al total
+        /// </summary>
+        /// <returns>Devuelve todo lo que hay escrito en el fichero que hemos leido</returns>
+        private string leerArchivos()
+        {
+            string line;
+            string total = null;
+            // Read the file and display it line by line.  
+            _strRFile = new StreamReader(_Path);
+            ///mientras que la linea sea diferende de null
+            while ((line = _strRFile.ReadLine()) != null)
+            {
+                total = total + "\n" + line;
+
+            }
+            ///cerramos el streamreader
+            _strRFile.Close();
+            ///devolvemos el valor total del archivo leido
+            return total;
         }
         #endregion
     }

@@ -142,7 +142,7 @@ namespace ServerTcpIP
                                 txtBoxRecibes.Text = data;
                             }
                             ///Una vez usada la variable data para recibir la respuesta
-                            ///del cliente, la reutilizamos para poner el mensaje que 
+                            ///del cliente, la reutilizamos para poner el mensaje que
                             ///le vamos a mandar al server
                             data = "Por la alianza!!";
                             ///la pasamos de string a bytes

@@ -8,11 +8,13 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+using System.IO;
 
 namespace ClienteTcpIP
 {
     public partial class frmCliente : Form
-    {
+    {        
         #region Variables Globales
         /// <summary>
         /// Declaramos la ip del server al cual nos vamos a conectar
@@ -35,6 +37,7 @@ namespace ClienteTcpIP
         /// declaramos un boolean para verificar si podemos pulsar el botn send o no
         /// </summary>
         bool _CanSend;
+        const int _BufferSize = 1500;
         #endregion
         #region Constructores
         /// <summary>
@@ -148,6 +151,7 @@ namespace ClienteTcpIP
                 {
                     txtBoxRecibes.Text = responseData;
                 }
+                //_Client.SendFile();
                 ///Cerramos el networkstream
                 _nStream.Close();
                 ///Cerramos el TcpClient
@@ -189,8 +193,54 @@ namespace ClienteTcpIP
                 btnSend.Enabled = true;
             }
         }
+        public void SendFiles(string M, string IPA, Int32 PortN)
+        {
+            byte[] SendingBuffer = null;
+            //TcpClient client = null;
+            txtBoxMandas.Text = "";
+            NetworkStream netstream = null;
+            try
+            {
+                _Client = new TcpClient(IPA, PortN);
+                txtBoxMandas.Text = "Connected to the Server...\n";
+                netstream = _Client.GetStream();
+                FileStream Fs = new FileStream(M, FileMode.Open, FileAccess.Read);
+                int NoOfPackets = Convert.ToInt32
+                (Math.Ceiling(Convert.ToDouble(Fs.Length) / Convert.ToDouble(_BufferSize)));
+                progressBar1.Maximum = NoOfPackets;
+                int TotalLength = (int)Fs.Length, CurrentPacketLength, counter = 0;
+                for (int i = 0; i < NoOfPackets; i++)
+                {
+                    if (TotalLength > _BufferSize)
+                    {
+                        CurrentPacketLength = _BufferSize;
+                        TotalLength = TotalLength - CurrentPacketLength;
+                    }
+                    else
+                        CurrentPacketLength = TotalLength;
+                    SendingBuffer = new byte[CurrentPacketLength];
+                    Fs.Read(SendingBuffer, 0, CurrentPacketLength);
+                    netstream.Write(SendingBuffer, 0, (int)SendingBuffer.Length);
+                    if (progressBar1.Value >= progressBar1.Maximum)
+                        progressBar1.Value = progressBar1.Minimum;
+                    progressBar1.PerformStep();
+                }
+
+                txtBoxMandas.Text = txtBoxMandas.Text + "Sent " + Fs.Length.ToString() + " bytes to the server";
+                Fs.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                netstream.Close();
+                _Client.Close();
+            }
+        }
         #endregion
 
-        
+
     }
 }

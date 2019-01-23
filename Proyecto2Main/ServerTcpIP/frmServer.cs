@@ -45,7 +45,9 @@ namespace ServerTcpIP
         /// <summary>
         /// Declaramos una constante con el path del fichero que vamos a leer
         /// </summary>
-        const string _Path = @"archivos/codigos.txt";
+        const string _PathCodigos = @"archivos/codigos.txt";
+        const int _BufferSize = 1500;
+        string _Status;
         #endregion
         #region Constructores
         /// <summary>
@@ -187,7 +189,7 @@ namespace ServerTcpIP
             string line;
             string total = null;
             // Read the file and display it line by line.  
-            _strRFile = new StreamReader(_Path);
+            _strRFile = new StreamReader(_PathCodigos);
             ///mientras que la linea sea diferende de null
             while ((line = _strRFile.ReadLine()) != null)
             {
@@ -198,6 +200,76 @@ namespace ServerTcpIP
             _strRFile.Close();
             ///devolvemos el valor total del archivo leido
             return total;
+        }
+        public void ReceiveFiles(int portN)
+        {
+            TcpListener Listener = null;
+            try
+            {
+                Listener = new TcpListener(IPAddress.Any, portN);
+                Listener.Start();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            byte[] RecData = new byte[_BufferSize];
+            int RecBytes;
+
+            for (; ; )
+            {
+                TcpClient client = null;
+                NetworkStream netstream = null;
+                _Status = string.Empty;
+                try
+                {
+                    string message = "Accept the Incoming File ";
+                    string caption = "Incoming Connection";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result;
+
+                    if (Listener.Pending())
+                    {
+                        client = Listener.AcceptTcpClient();
+                        netstream = client.GetStream();
+                        _Status = "Connected to a client\n";
+                        result = MessageBox.Show(message, caption, buttons);
+
+                        if (result == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            string SaveFileName = string.Empty;
+                            SaveFileDialog DialogSave = new SaveFileDialog();
+                            DialogSave.Filter = "All files (*.*)|*.*";
+                            DialogSave.RestoreDirectory = true;
+                            DialogSave.Title = "Where do you want to save the file?";
+                            DialogSave.InitialDirectory = @"C:/";
+                            if (DialogSave.ShowDialog() == DialogResult.OK)
+                                SaveFileName = DialogSave.FileName;
+                            if (SaveFileName != string.Empty)
+                            {
+                                int totalrecbytes = 0;
+                                FileStream Fs = new FileStream
+                 (SaveFileName, FileMode.OpenOrCreate, FileAccess.Write);
+                                while ((RecBytes = netstream.Read
+                     (RecData, 0, RecData.Length)) > 0)
+                                {
+                                    Fs.Write(RecData, 0, RecBytes);
+                                    totalrecbytes += RecBytes;
+                                }
+                                Fs.Close();
+                            }
+                            netstream.Close();
+                            client.Close();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    //netstream.Close();
+                }
+            }
         }
         #endregion
     }

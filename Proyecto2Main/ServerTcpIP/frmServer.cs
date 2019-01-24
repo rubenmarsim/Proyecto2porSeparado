@@ -46,7 +46,7 @@ namespace ServerTcpIP
         /// Declaramos una constante con el path del fichero que vamos a leer
         /// </summary>
         const string _PathCodigos = @"archivos/codigos.txt";
-        const int _BufferSize = 1500;
+        const int _BufferSize = 1024;
         string _Status;
         #endregion
         #region Constructores
@@ -71,7 +71,7 @@ namespace ServerTcpIP
             lblServerStatus.Text = "Server is Running...";
             ///Creamos el hilo principal que vamos a usar en el server
             ///y le asociamos el metodo ServerOn
-            Thread serverThread = new Thread(ServerOn);
+            Thread serverThread = new Thread(StartReceiving);
             ///Indicamos que va a ser un subproceso unico
             serverThread.SetApartmentState(ApartmentState.STA);
             ///Iniciamos el hilo
@@ -194,20 +194,22 @@ namespace ServerTcpIP
             while ((line = _strRFile.ReadLine()) != null)
             {
                 total = total + "\n" + line;
-
             }
             ///cerramos el streamreader
             _strRFile.Close();
             ///devolvemos el valor total del archivo leido
             return total;
         }
+        public void StartReceiving()
+        {
+            ReceiveFiles(_Port);
+        }
         public void ReceiveFiles(int portN)
         {
-            TcpListener Listener = null;
             try
             {
-                Listener = new TcpListener(IPAddress.Any, portN);
-                Listener.Start();
+                _Listener = new TcpListener(IPAddress.Any, portN);
+                _Listener.Start();
             }
             catch (Exception ex)
             {
@@ -219,8 +221,6 @@ namespace ServerTcpIP
 
             for (; ; )
             {
-                TcpClient client = null;
-                NetworkStream netstream = null;
                 _Status = string.Empty;
                 try
                 {
@@ -229,10 +229,10 @@ namespace ServerTcpIP
                     MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                     DialogResult result;
 
-                    if (Listener.Pending())
+                    if (_Listener.Pending())
                     {
-                        client = Listener.AcceptTcpClient();
-                        netstream = client.GetStream();
+                        _Client = _Listener.AcceptTcpClient();
+                        _nStream = _Client.GetStream();
                         _Status = "Connected to a client\n";
                         result = MessageBox.Show(message, caption, buttons);
 
@@ -250,17 +250,17 @@ namespace ServerTcpIP
                             {
                                 int totalrecbytes = 0;
                                 FileStream Fs = new FileStream
-                 (SaveFileName, FileMode.OpenOrCreate, FileAccess.Write);
-                                while ((RecBytes = netstream.Read
-                     (RecData, 0, RecData.Length)) > 0)
+                                (SaveFileName, FileMode.OpenOrCreate, FileAccess.Write);
+                                while ((RecBytes = _nStream.Read
+                                (RecData, 0, RecData.Length)) > 0)
                                 {
                                     Fs.Write(RecData, 0, RecBytes);
                                     totalrecbytes += RecBytes;
                                 }
                                 Fs.Close();
                             }
-                            netstream.Close();
-                            client.Close();
+                            _nStream.Close();
+                            _Client.Close();
                         }
                     }
                 }

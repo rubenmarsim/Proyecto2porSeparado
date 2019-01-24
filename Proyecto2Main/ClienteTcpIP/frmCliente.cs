@@ -37,7 +37,8 @@ namespace ClienteTcpIP
         /// declaramos un boolean para verificar si podemos pulsar el botn send o no
         /// </summary>
         bool _CanSend;
-        const int _BufferSize = 1500;
+        const int _BufferSize = 1024;
+        const string _PathCodigos = @"archivos/codigos.txt";
         #endregion
         #region Constructores
         /// <summary>
@@ -79,7 +80,8 @@ namespace ClienteTcpIP
         private void btnSend_Click(object sender, EventArgs e)
         {
             ///Llamamor al metodo ConnectandSend que conecta con el server y le envia datos
-            ConnectandSend(_IP, txtBoxMessage.Text);
+            //ConnectandSend(_IP, txtBoxMessage.Text);
+            SendFiles(_PathCodigos, _IP, _Port);
         }
         /// <summary>
         /// Evento que se ejecuta cuando pulsamos el boton desconectar
@@ -198,15 +200,15 @@ namespace ClienteTcpIP
             byte[] SendingBuffer = null;
             //TcpClient client = null;
             txtBoxMandas.Text = "";
-            NetworkStream netstream = null;
+            //NetworkStream netstream = null;
             try
             {
                 _Client = new TcpClient(IPA, PortN);
                 txtBoxMandas.Text = "Connected to the Server...\n";
-                netstream = _Client.GetStream();
+                _nStream = _Client.GetStream();
                 FileStream Fs = new FileStream(M, FileMode.Open, FileAccess.Read);
                 int NoOfPackets = Convert.ToInt32
-                (Math.Ceiling(Convert.ToDouble(Fs.Length) / Convert.ToDouble(_BufferSize)));
+                    (Math.Ceiling(Convert.ToDouble(Fs.Length) / Convert.ToDouble(_BufferSize)));
                 progressBar1.Maximum = NoOfPackets;
                 int TotalLength = (int)Fs.Length, CurrentPacketLength, counter = 0;
                 for (int i = 0; i < NoOfPackets; i++)
@@ -218,11 +220,13 @@ namespace ClienteTcpIP
                     }
                     else
                         CurrentPacketLength = TotalLength;
+
                     SendingBuffer = new byte[CurrentPacketLength];
                     Fs.Read(SendingBuffer, 0, CurrentPacketLength);
-                    netstream.Write(SendingBuffer, 0, (int)SendingBuffer.Length);
+                    _nStream.Write(SendingBuffer, 0, (int)SendingBuffer.Length);
                     if (progressBar1.Value >= progressBar1.Maximum)
                         progressBar1.Value = progressBar1.Minimum;
+
                     progressBar1.PerformStep();
                 }
 
@@ -235,7 +239,7 @@ namespace ClienteTcpIP
             }
             finally
             {
-                netstream.Close();
+                _nStream.Close();
                 _Client.Close();
             }
         }

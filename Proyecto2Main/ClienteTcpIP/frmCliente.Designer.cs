@@ -44,6 +44,7 @@
             // 
             // grpBoxCliente
             // 
+            this.grpBoxCliente.Controls.Add(this.progressBar1);
             this.grpBoxCliente.Controls.Add(this.btnDisconnect);
             this.grpBoxCliente.Controls.Add(this.btnSend);
             this.grpBoxCliente.Controls.Add(this.btnConnect);
@@ -145,7 +146,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(539, 104);
+            this.progressBar1.Location = new System.Drawing.Point(120, 152);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(100, 23);
             this.progressBar1.TabIndex = 1;
@@ -155,7 +156,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.grpBoxCliente);
             this.Name = "frmCliente";
             this.Text = "frmCliente";

@@ -30,6 +30,16 @@
             Declaramos la ip del server al cual nos vamos a conectar
             </summary>
         </member>
+        <member name="F:ServerTcpIP.frmServer._strRFile">
+            <summary>
+            Declarmos el stream reader, para poder leer los ficheros
+            </summary>
+        </member>
+        <member name="F:ServerTcpIP.frmServer._Path">
+            <summary>
+            Declaramos una constante con el path del fichero que vamos a leer
+            </summary>
+        </member>
         <member name="M:ServerTcpIP.frmServer.#ctor">
             <summary>
             Constructor por defecto
@@ -46,6 +56,12 @@
             <summary>
             Hace todos los procesos para que el server se inicie
             </summary>
+        </member>
+        <member name="M:ServerTcpIP.frmServer.leerArchivos">
+            <summary>
+            Leemos todo el fichero linea por line y lo vamos concatenando al total
+            </summary>
+            <returns>Devuelve todo lo que hay escrito en el fichero que hemos leido</returns>
         </member>
         <member name="F:ServerTcpIP.frmServer.components">
             <summary>

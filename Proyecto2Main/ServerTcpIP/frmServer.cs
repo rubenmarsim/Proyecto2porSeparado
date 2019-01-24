@@ -293,7 +293,7 @@ namespace ServerTcpIP
                                 ///cierra el filestream
                                 Fs.Close();
                             }
-                            ///cerramos todo
+                            ///Cerramos todo
                             _nStream.Close();
                             _Client.Close();
                         }

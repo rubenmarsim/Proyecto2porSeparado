@@ -37,7 +37,13 @@ namespace ClienteTcpIP
         /// declaramos un boolean para verificar si podemos pulsar el botn send o no
         /// </summary>
         bool _CanSend;
+        /// <summary>
+        /// Espacio de memoria
+        /// </summary>
         const int _BufferSize = 1024;
+        /// <summary>
+        /// Path donde se encuentra el erchivo con los codigos
+        /// </summary>
         const string _PathCodigos = @"archivos/codigos.txt";
         #endregion
         #region Constructores
@@ -195,6 +201,12 @@ namespace ClienteTcpIP
                 btnSend.Enabled = true;
             }
         }
+        /// <summary>
+        /// Mandamos el archivo
+        /// </summary>
+        /// <param name="M">Path de los codigos</param>
+        /// <param name="IPA">IP del server</param>
+        /// <param name="PortN">puerto el cual usamos</param>
         public void SendFiles(string M, string IPA, Int32 PortN)
         {
             byte[] SendingBuffer = null;
@@ -203,10 +215,15 @@ namespace ClienteTcpIP
             //NetworkStream netstream = null;
             try
             {
+                ///Instanciamos el TcpClient y le pasamos los parametros, que son
+                ///la ip a donde se tiene que conectar y el puerto
                 _Client = new TcpClient(IPA, PortN);
                 txtBoxMandas.Text = "Connected to the Server...\n";
+                ///Le decimos al networkstream que use el TcpClient
                 _nStream = _Client.GetStream();
+                ///Instanciamos un filestream y le pasamos el fichero que tiene que abrir, y le indicamos que lo abra y lo lea
                 FileStream Fs = new FileStream(M, FileMode.Open, FileAccess.Read);
+                ///Hacemos los procesos para que funcione la progress bar
                 int NoOfPackets = Convert.ToInt32
                     (Math.Ceiling(Convert.ToDouble(Fs.Length) / Convert.ToDouble(_BufferSize)));
                 progressBar1.Maximum = NoOfPackets;
@@ -229,14 +246,16 @@ namespace ClienteTcpIP
 
                     progressBar1.PerformStep();
                 }
-
+                ///Printamos lo que mandamos
                 txtBoxMandas.Text = txtBoxMandas.Text + "Sent " + Fs.Length.ToString() + " bytes to the server";
+                ///cerramos el filestream
                 Fs.Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
+            ///cerramos todo
             finally
             {
                 _nStream.Close();

@@ -40,6 +40,17 @@
             Declaramos una constante con el path del fichero que vamos a leer
             </summary>
         </member>
+        <member name="F:ServerTcpIP.frmServer._BufferSize">
+            <summary>
+            Espacio de memoria
+            </summary>
+        </member>
+        <member name="F:ServerTcpIP.frmServer._Status">
+            <summary>
+            Variables que usaremos para actualizar el texto del label status
+            desde el hilo
+            </summary>
+        </member>
         <member name="M:ServerTcpIP.frmServer.#ctor">
             <summary>
             Constructor por defecto
@@ -62,6 +73,18 @@
             Leemos todo el fichero linea por line y lo vamos concatenando al total
             </summary>
             <returns>Devuelve todo lo que hay escrito en el fichero que hemos leido</returns>
+        </member>
+        <member name="M:ServerTcpIP.frmServer.StartReceiving">
+            <summary>
+            Como no podemos pasarle un metodo con parametros directamente Thread,
+            hacemos esta funcion para llamar a la otra con parametros
+            </summary>
+        </member>
+        <member name="M:ServerTcpIP.frmServer.ReceiveFiles(System.Int32)">
+            <summary>
+            Metodo para recibir ficheros
+            </summary>
+            <param name="portN">puerto el cual usamos</param>
         </member>
         <member name="F:ServerTcpIP.frmServer.components">
             <summary>

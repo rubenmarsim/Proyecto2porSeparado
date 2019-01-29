@@ -32,10 +32,13 @@
             this.btnUNZIP = new System.Windows.Forms.Button();
             this.btnZIP = new System.Windows.Forms.Button();
             this.grpBoxMessages = new System.Windows.Forms.GroupBox();
-            this.grpBoxCodes = new System.Windows.Forms.GroupBox();
             this.btnTCPIP = new System.Windows.Forms.Button();
+            this.grpBoxCodes = new System.Windows.Forms.GroupBox();
+            this.btnGenerateArchieves = new System.Windows.Forms.Button();
+            this.btnDescifrar = new System.Windows.Forms.Button();
             this.grpBoxZIP.SuspendLayout();
             this.grpBoxMessages.SuspendLayout();
+            this.grpBoxCodes.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpBoxZIP
@@ -79,15 +82,6 @@
             this.grpBoxMessages.TabStop = false;
             this.grpBoxMessages.Text = "Messages";
             // 
-            // grpBoxCodes
-            // 
-            this.grpBoxCodes.Location = new System.Drawing.Point(408, 94);
-            this.grpBoxCodes.Name = "grpBoxCodes";
-            this.grpBoxCodes.Size = new System.Drawing.Size(200, 100);
-            this.grpBoxCodes.TabIndex = 2;
-            this.grpBoxCodes.TabStop = false;
-            this.grpBoxCodes.Text = "Codes";
-            // 
             // btnTCPIP
             // 
             this.btnTCPIP.Location = new System.Drawing.Point(29, 40);
@@ -97,6 +91,37 @@
             this.btnTCPIP.Text = "TCP-IP";
             this.btnTCPIP.UseVisualStyleBackColor = true;
             this.btnTCPIP.Click += new System.EventHandler(this.btnTCPIP_Click);
+            // 
+            // grpBoxCodes
+            // 
+            this.grpBoxCodes.Controls.Add(this.btnDescifrar);
+            this.grpBoxCodes.Controls.Add(this.btnGenerateArchieves);
+            this.grpBoxCodes.Location = new System.Drawing.Point(408, 94);
+            this.grpBoxCodes.Name = "grpBoxCodes";
+            this.grpBoxCodes.Size = new System.Drawing.Size(244, 100);
+            this.grpBoxCodes.TabIndex = 2;
+            this.grpBoxCodes.TabStop = false;
+            this.grpBoxCodes.Text = "Codes";
+            // 
+            // btnGenerateArchieves
+            // 
+            this.btnGenerateArchieves.Location = new System.Drawing.Point(16, 19);
+            this.btnGenerateArchieves.Name = "btnGenerateArchieves";
+            this.btnGenerateArchieves.Size = new System.Drawing.Size(211, 23);
+            this.btnGenerateArchieves.TabIndex = 0;
+            this.btnGenerateArchieves.Text = "Generar Archivos (Letras i Cifrados)";
+            this.btnGenerateArchieves.UseVisualStyleBackColor = true;
+            this.btnGenerateArchieves.Click += new System.EventHandler(this.btnGenerateArchieves_Click);
+            // 
+            // btnDescifrar
+            // 
+            this.btnDescifrar.Location = new System.Drawing.Point(16, 57);
+            this.btnDescifrar.Name = "btnDescifrar";
+            this.btnDescifrar.Size = new System.Drawing.Size(211, 23);
+            this.btnDescifrar.TabIndex = 1;
+            this.btnDescifrar.Text = "Descifrar";
+            this.btnDescifrar.UseVisualStyleBackColor = true;
+            this.btnDescifrar.Click += new System.EventHandler(this.btnDescifrar_Click);
             // 
             // Proyecto2Main
             // 
@@ -112,6 +137,7 @@
             this.Load += new System.EventHandler(this.Proyecto2Main_Load);
             this.grpBoxZIP.ResumeLayout(false);
             this.grpBoxMessages.ResumeLayout(false);
+            this.grpBoxCodes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -124,6 +150,8 @@
         private System.Windows.Forms.GroupBox grpBoxMessages;
         private System.Windows.Forms.GroupBox grpBoxCodes;
         private System.Windows.Forms.Button btnTCPIP;
+        private System.Windows.Forms.Button btnDescifrar;
+        private System.Windows.Forms.Button btnGenerateArchieves;
     }
 }
 

@@ -30,6 +30,16 @@
             declaramos un boolean para verificar si podemos pulsar el botn send o no
             </summary>
         </member>
+        <member name="F:ClienteTcpIP.frmCliente._BufferSize">
+            <summary>
+            Espacio de memoria
+            </summary>
+        </member>
+        <member name="F:ClienteTcpIP.frmCliente._PathCodigos">
+            <summary>
+            Path donde se encuentra el erchivo con los codigos
+            </summary>
+        </member>
         <member name="M:ClienteTcpIP.frmCliente.#ctor">
             <summary>
             Constructor por defecto
@@ -86,6 +96,14 @@
             <summary>
             Verifica si se puede usar el boton de enviar o no
             </summary>
+        </member>
+        <member name="M:ClienteTcpIP.frmCliente.SendFiles(System.String,System.String,System.Int32)">
+            <summary>
+            Mandamos el archivo
+            </summary>
+            <param name="M">Path de los codigos</param>
+            <param name="IPA">IP del server</param>
+            <param name="PortN">puerto el cual usamos</param>
         </member>
         <member name="F:ClienteTcpIP.frmCliente.components">
             <summary>

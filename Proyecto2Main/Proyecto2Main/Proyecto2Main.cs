@@ -15,11 +15,14 @@ namespace Proyecto2Main
     public partial class Proyecto2Main : Form
     {
         #region Variables e instancias Globales
-        #region ZIP y UNZIP     
+        #region ZIP y UNZIP
         const string _PathToCompress = @"archivos/compress";
         const string _PathCompressedArchive = @"archivos/ArchivosZIP.zip";
         const string _PathToDecompress = @"archivos\extract";
         FileInfo _FileInfo;
+        #endregion
+        #region Codes
+
         #endregion
         #endregion
 
@@ -184,7 +187,24 @@ namespace Proyecto2Main
         #endregion
 
         #region Codes
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnGenerateArchieves_Click(object sender, EventArgs e)
+        {
 
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDescifrar_Click(object sender, EventArgs e)
+        {
+
+        }
         #endregion
     }
 }

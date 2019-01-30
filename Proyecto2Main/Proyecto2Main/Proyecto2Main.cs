@@ -22,7 +22,7 @@ namespace Proyecto2Main
         FileInfo _FileInfo;
         #endregion
         #region Codes
-
+        public string[] oArrayAbecedario;
         #endregion
         #endregion
 
@@ -42,6 +42,10 @@ namespace Proyecto2Main
         {
             #region ZIP y UNZIP
             _FileInfo = new FileInfo(@"archivos\PruebaZIP.txt");
+            #endregion
+
+            #region Codes
+            oArrayAbecedario = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
             #endregion
         }
 
@@ -166,6 +170,7 @@ namespace Proyecto2Main
         #endregion
 
         #region TCP-IP
+        #region Events
         private void btnTCPIP_Click(object sender, EventArgs e)
         {
             try
@@ -186,26 +191,45 @@ namespace Proyecto2Main
             }
         }
         #endregion
+        #endregion
 
         #region Codes
+        #region Events
         /// <summary>
-        /// 
+        /// Evento que se ejecuta cuando pulsamos el boton de generar archivos
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnGenerateArchieves_Click(object sender, EventArgs e)
         {
-
+            EncriptarTXT();
         }
         /// <summary>
-        /// 
+        /// Evento que se ejecuta cuando pulsamos el boton descomprimir
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnDescifrar_Click(object sender, EventArgs e)
         {
+            DesencriptarTXT();
+        }
+        #endregion
+        #region Methods
+        /// <summary>
+        /// Metodo para encriptar archivos TXT
+        /// </summary>
+        public void EncriptarTXT()
+        {
 
         }
+        /// <summary>
+        /// Metodo para desencriptar archivos TXT
+        /// </summary>
+        public void DesencriptarTXT()
+        {
+
+        }
+        #endregion
         #endregion
     }
 }

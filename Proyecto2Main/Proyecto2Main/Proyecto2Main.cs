@@ -76,6 +76,7 @@ namespace Proyecto2Main
         {
             try
             {
+                if (!Directory.Exists(_PathToCompress)) Directory.CreateDirectory(_PathToCompress);
                 ZipFile.CreateFromDirectory(_PathToCompress, _PathCompressedArchive);
             }
             catch (IOException)
@@ -182,7 +183,7 @@ namespace Proyecto2Main
                 {
                     this.Close();
                 }
-            }            
+            }
         }
         #endregion
 

@@ -55,17 +55,27 @@
         </member>
         <member name="M:Proyecto2Main.Proyecto2Main.btnGenerateArchieves_Click(System.Object,System.EventArgs)">
             <summary>
-            
+            Evento que se ejecuta cuando pulsamos el boton de generar archivos
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
         <member name="M:Proyecto2Main.Proyecto2Main.btnDescifrar_Click(System.Object,System.EventArgs)">
             <summary>
-            
+            Evento que se ejecuta cuando pulsamos el boton descomprimir
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
+        </member>
+        <member name="M:Proyecto2Main.Proyecto2Main.EncriptarTXT">
+            <summary>
+            Metodo para encriptar archivos TXT
+            </summary>
+        </member>
+        <member name="M:Proyecto2Main.Proyecto2Main.DesencriptarTXT">
+            <summary>
+            Metodo para desencriptar archivos TXT
+            </summary>
         </member>
         <member name="F:Proyecto2Main.Proyecto2Main.components">
             <summary>

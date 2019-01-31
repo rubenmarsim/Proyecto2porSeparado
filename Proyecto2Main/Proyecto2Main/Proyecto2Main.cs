@@ -22,7 +22,8 @@ namespace Proyecto2Main
         FileInfo _FileInfo;
         #endregion
         #region Codes
-        public string[] oArrayAbecedario;
+        public string[] _oArrayAbecedario;
+        string[] _letrasRandom;
         #endregion
         #endregion
 
@@ -45,7 +46,7 @@ namespace Proyecto2Main
             #endregion
 
             #region Codes
-            oArrayAbecedario = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+            _oArrayAbecedario = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
             #endregion
         }
 
@@ -220,7 +221,7 @@ namespace Proyecto2Main
         /// </summary>
         public void EncriptarTXT()
         {
-
+            crearFicheros();
         }
         /// <summary>
         /// Metodo para desencriptar archivos TXT
@@ -228,6 +229,46 @@ namespace Proyecto2Main
         public void DesencriptarTXT()
         {
 
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="numeroFitxer"></param>
+        /// <returns></returns>
+        public string [] crearLetras(int numeroFitxer)
+        {
+            _letrasRandom = new string[1000000];
+            Random oRandom = new Random();
+            String rutaFi = "archivos/encriptacion/lletres" + numeroFitxer + ".txt";
+            string codi = string.Empty;
+            StreamWriter file = new StreamWriter(rutaFi, true);
+            for(int i = 0; i < _letrasRandom.Length; i++)
+            {
+                int numRandom = oRandom.Next(0, 25);
+                codi = _oArrayAbecedario[numRandom];
+                file.Write(codi);
+                _letrasRandom[i] = codi;
+            }
+            file.Close();
+            return _letrasRandom;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private void XifrarLetraNum()
+        {
+
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private void crearFicheros()
+        {
+            _letrasRandom = new string[16000000];
+            for (int i=1; i<5; i++)
+            {
+                _letrasRandom = crearLetras(i);
+            }
         }
         #endregion
         #endregion

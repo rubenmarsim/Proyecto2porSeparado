@@ -42,10 +42,13 @@ namespace Proyecto2Main
         private void Proyecto2Main_Load(object sender, EventArgs e)
         {
             #region ZIP y UNZIP
+            ///instanciamos el FileInfo con el parametro filename, en el cual
+            ///pasamos el path y el nombre del archivo
             _FileInfo = new FileInfo(@"archivos\PruebaZIP.txt");
             #endregion
 
             #region Codes
+            ///llenamos el array con las letras del abecedario
             _oArrayAbecedario = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
             #endregion
         }
@@ -233,34 +236,52 @@ namespace Proyecto2Main
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="numeroFitxer"></param>
+        /// <param name="numeroFitxer">numero de fichero que estamos creando</param>
         /// <returns></returns>
         public string [] crearLetras(int numeroFitxer)
         {
+            ///array de string en el cual guardamos el millon de letras random que generamos
             _letrasRandom = new string[1000000];
+            ///clase que genera numeros aleatorios
             Random oRandom = new Random();
+            ///path y nombre con el cual vamos a guardar el fichero
             String rutaFi = "archivos/encriptacion/lletres" + numeroFitxer + ".txt";
+            ///declaramos codi
             string codi = string.Empty;
+            ///Instanciamos un StreamWriter con los parametros rutaFi que es donde se va a 
+            ///escribir y con true para decirle que queremos codificar
             StreamWriter file = new StreamWriter(rutaFi, true);
+            ///Se ejecuta el bucle un millon de veces ya que el array es de 1000000
             for(int i = 0; i < _letrasRandom.Length; i++)
             {
+                ///Cogemos un numero random con la clase oRandom, y le decimos que 
+                ///el valor minimo sea 0 y el maximo 25
                 int numRandom = oRandom.Next(0, 25);
+                ///Cogemos una letra del array del abecedario segun el numero random que nos ha tocado
                 codi = _oArrayAbecedario[numRandom];
+                ///escribimos la letra que hemos cogido en el archivo
                 file.Write(codi);
+                ///guardamos la letra random en un array
                 _letrasRandom[i] = codi;
             }
+            ///cerramos el archivo
             file.Close();
+            ///devolvemos el array
             return _letrasRandom;
         }
         /// <summary>
-        /// 
+        /// call me spaceman
         /// </summary>
         private void XifrarLetraNum()
         {
 
         }
         /// <summary>
-        /// 
+        /// Metodo para crear ficheros con letras generadas aleatoriamente,
+        /// para ello declaramos un array donde vamos a guardar las letras, y 
+        /// luego hacemos un for en el cual indicamos que se haga 5 veces y 
+        /// llamamos al metodo para crear el fichero, de esta forma se nos van 
+        /// a crear 5 ficheros con 1000000 de letras cada uno
         /// </summary>
         private void crearFicheros()
         {

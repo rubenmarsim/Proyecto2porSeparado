@@ -77,6 +77,27 @@
             Metodo para desencriptar archivos TXT
             </summary>
         </member>
+        <member name="M:Proyecto2Main.Proyecto2Main.crearLetras(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="numeroFitxer">numero de fichero que estamos creando</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proyecto2Main.Proyecto2Main.XifrarLetraNum">
+            <summary>
+            call me spaceman
+            </summary>
+        </member>
+        <member name="M:Proyecto2Main.Proyecto2Main.crearFicheros">
+            <summary>
+            Metodo para crear ficheros con letras generadas aleatoriamente,
+            para ello declaramos un array donde vamos a guardar las letras, y 
+            luego hacemos un for en el cual indicamos que se haga 5 veces y 
+            llamamos al metodo para crear el fichero, de esta forma se nos van 
+            a crear 5 ficheros con 1000000 de letras cada uno
+            </summary>
+        </member>
         <member name="F:Proyecto2Main.Proyecto2Main.components">
             <summary>
             Variable del diseñador necesaria.

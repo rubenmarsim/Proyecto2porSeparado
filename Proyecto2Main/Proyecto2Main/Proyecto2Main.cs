@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.IO;
 using System.IO.Compression;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Proyecto2Main
 {
@@ -24,6 +26,7 @@ namespace Proyecto2Main
         #region Codes
         public string[] _oArrayAbecedario;
         string[] _letrasRandom;
+        const string _Query = "SELECT Numbers from InnerEncryptionData where IdInnerEncryption = 24";
         #endregion
         #endregion
 
@@ -234,7 +237,7 @@ namespace Proyecto2Main
 
         }
         /// <summary>
-        /// 
+        /// Metodo para crear un millon de letras aleatoriamente
         /// </summary>
         /// <param name="numeroFitxer">numero de fichero que estamos creando</param>
         /// <returns></returns>
@@ -266,8 +269,32 @@ namespace Proyecto2Main
             }
             ///cerramos el archivo
             file.Close();
-            ///devolvemos el array
+            ///devolvemos el array con todas las letras random generadas
             return _letrasRandom;
+        }
+        /// <summary>
+        /// Bonfire
+        /// </summary>
+        /// <returns></returns>
+        public string[] codiLetra()
+        {
+            string[] oArrayLetraCodi = new string[26];
+
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = ConfigurationManager.ConnectionStrings["RepublicSystemConnectionString"].ConnectionString;
+            connection.Open();
+
+            DataSet dtsCli = new DataSet();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(_Query, connection);
+            adapter.Fill(dtsCli);
+
+            for(int i = 0; i < oArrayLetraCodi.Length; i++)
+            {
+                oArrayLetraCodi[i] = dtsCli.Tables[0].Rows[i][0].ToString();
+            }
+
+            return oArrayLetraCodi;
         }
         /// <summary>
         /// call me spaceman

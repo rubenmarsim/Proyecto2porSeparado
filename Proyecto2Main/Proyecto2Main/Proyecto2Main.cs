@@ -297,11 +297,33 @@ namespace Proyecto2Main
             return oArrayLetraCodi;
         }
         /// <summary>
-        /// call me spaceman
+        /// 
         /// </summary>
-        private void XifrarLetraNum()
+        /// <param name="crearLletres"></param>
+        /// <param name="z"></param>
+        private void XifrarLetraNum(string[] crearLletres, int z)
         {
+            string[] codiLletra = new string[26];
 
+            bool verifica;
+            string rutaFitxer = @"archivos\encriptacion\Arxiu" + z + ".txt";
+            codiLletra = codiLetra();
+            StreamWriter XifratNums = new StreamWriter(rutaFitxer);
+            for (int i = 0; i < crearLletres.Length; i++)
+            {
+                verifica = false;
+
+                for (int x = 0; x < _oArrayAbecedario.Length && verifica == false; x++)
+                {
+                    if (crearLletres[i].Equals(_oArrayAbecedario[x]))
+                    {
+                        XifratNums.Write(codiLletra[x]);
+                        verifica = true;
+                    }
+                }
+            }
+
+            XifratNums.Close();
         }
         /// <summary>
         /// Metodo para crear ficheros con letras generadas aleatoriamente,
@@ -316,6 +338,7 @@ namespace Proyecto2Main
             for (int i=1; i<5; i++)
             {
                 _letrasRandom = crearLetras(i);
+                XifrarLetraNum(_letrasRandom, i);
             }
         }
         #endregion

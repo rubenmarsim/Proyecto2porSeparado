@@ -79,15 +79,23 @@
         </member>
         <member name="M:Proyecto2Main.Proyecto2Main.crearLetras(System.Int32)">
             <summary>
-            
+            Metodo para crear un millon de letras aleatoriamente
             </summary>
             <param name="numeroFitxer">numero de fichero que estamos creando</param>
             <returns></returns>
         </member>
-        <member name="M:Proyecto2Main.Proyecto2Main.XifrarLetraNum">
+        <member name="M:Proyecto2Main.Proyecto2Main.codiLetra">
             <summary>
-            call me spaceman
+            Bonfire
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Proyecto2Main.Proyecto2Main.XifrarLetraNum(System.String[],System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="crearLletres"></param>
+            <param name="z"></param>
         </member>
         <member name="M:Proyecto2Main.Proyecto2Main.crearFicheros">
             <summary>
@@ -118,6 +126,171 @@
         <member name="M:Proyecto2Main.Program.Main">
             <summary>
             Punto de entrada principal para la aplicación.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.DeliveryDataDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.InnerEncryptionDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.InnerEncryptionDataDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.PlanetKeysDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.PlanetsDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.SpaceShipsDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.DeliveryDataRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.InnerEncryptionRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.InnerEncryptionDataRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.PlanetKeysRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.PlanetsRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.SpaceShipsRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.DeliveryDataRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.InnerEncryptionRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.InnerEncryptionDataRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.PlanetKeysRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.PlanetsRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSet.SpaceShipsRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSetTableAdapters.DeliveryDataTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSetTableAdapters.InnerEncryptionTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSetTableAdapters.InnerEncryptionDataTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSetTableAdapters.PlanetKeysTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSetTableAdapters.PlanetsTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSetTableAdapters.SpaceShipsTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSetTableAdapters.TableAdapterManager">
+             <summary>
+            TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+            </summary>
+        </member>
+        <member name="M:Proyecto2Main.RepublicSystemDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(Proyecto2Main.RepublicSystemDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Update rows in top-down order.
+            </summary>
+        </member>
+        <member name="M:Proyecto2Main.RepublicSystemDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(Proyecto2Main.RepublicSystemDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Insert rows in top-down order.
+            </summary>
+        </member>
+        <member name="M:Proyecto2Main.RepublicSystemDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(Proyecto2Main.RepublicSystemDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Delete rows in bottom-up order.
+            </summary>
+        </member>
+        <member name="M:Proyecto2Main.RepublicSystemDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+            </summary>
+        </member>
+        <member name="M:Proyecto2Main.RepublicSystemDataSetTableAdapters.TableAdapterManager.UpdateAll(Proyecto2Main.RepublicSystemDataSet)">
+             <summary>
+            Update all changes to the dataset.
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+             <summary>
+            Update Order Option
+            </summary>
+        </member>
+        <member name="T:Proyecto2Main.RepublicSystemDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+             <summary>
+            Used to sort self-referenced table's rows
             </summary>
         </member>
         <member name="T:Proyecto2Main.Properties.Resources">

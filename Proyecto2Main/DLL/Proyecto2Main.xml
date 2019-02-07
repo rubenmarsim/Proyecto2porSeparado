@@ -86,9 +86,11 @@
         </member>
         <member name="M:Proyecto2Main.Proyecto2Main.codiLetra">
             <summary>
-            Bonfire
+            Metodo para conectarse a la BD hacer la consulta y llenar el dataset
+            una vez hemos rellenado el dataset hacemos un for y lo usamos para llenar
+            el array de letracodi
             </summary>
-            <returns></returns>
+            <returns>devuelve un array </returns>
         </member>
         <member name="M:Proyecto2Main.Proyecto2Main.XifrarLetraNum(System.String[],System.Int32)">
             <summary>

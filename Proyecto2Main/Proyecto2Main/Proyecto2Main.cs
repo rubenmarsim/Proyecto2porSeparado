@@ -273,9 +273,11 @@ namespace Proyecto2Main
             return _letrasRandom;
         }
         /// <summary>
-        /// Bonfire
+        /// Metodo para conectarse a la BD hacer la consulta y llenar el dataset
+        /// una vez hemos rellenado el dataset hacemos un for y lo usamos para llenar
+        /// el array de letracodi
         /// </summary>
-        /// <returns></returns>
+        /// <returns>devuelve un array con los codigos de cada letra del abecedario</returns>
         public string[] codiLetra()
         {
             string[] oArrayLetraCodi = new string[26];
